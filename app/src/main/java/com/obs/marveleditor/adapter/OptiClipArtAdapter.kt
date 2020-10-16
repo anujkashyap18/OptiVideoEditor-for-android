@@ -7,6 +7,7 @@
 
 package com.obs.marveleditor.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.net.Uri
@@ -37,6 +38,7 @@ class OptiClipArtAdapter(clipArtList: ArrayList<String>, val context: Context, o
         return myClipArtList.size
     }
 
+    @SuppressLint("RecyclerView")
     override fun onBindViewHolder(holder: MyPostViewHolder, position: Int) {
 
         val uri = Uri.fromFile(File(myClipArtList[position]))

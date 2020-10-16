@@ -35,22 +35,22 @@ class OptiVideoOptionsAdapter(videoOptions: ArrayList<String>, val context: Cont
     override fun onBindViewHolder(p0: MyPostViewHolder, p1: Int) {
 
         //set image based on video option
-        when(myVideoOptions[p1]){
+        when (myVideoOptions[p1]) {
             OptiConstant.FLIRT -> {
                 p0.ivOption.setImageResource(R.drawable.video_conference_24)
             }
-
-            OptiConstant.TRIM -> {
-                p0.ivOption.setImageResource(R.drawable.video_trimming_24)
-            }
-
-            OptiConstant.MUSIC -> {
-                p0.ivOption.setImageResource(R.drawable.music_video_24)
-            }
-
-            OptiConstant.PLAYBACK -> {
-                p0.ivOption.setImageResource(R.drawable.speed_skating_24)
-            }
+//
+//            OptiConstant.TRIM -> {
+//                p0.ivOption.setImageResource(R.drawable.video_trimming_24)
+//            }
+//
+//            OptiConstant.MUSIC -> {
+//                p0.ivOption.setImageResource(R.drawable.music_video_24)
+//            }
+//
+//            OptiConstant.PLAYBACK -> {
+//                p0.ivOption.setImageResource(R.drawable.speed_skating_24)
+//            }
 
             OptiConstant.TEXT -> {
                 p0.ivOption.setImageResource(R.drawable.text_width_24)
@@ -60,13 +60,13 @@ class OptiVideoOptionsAdapter(videoOptions: ArrayList<String>, val context: Cont
                 p0.ivOption.setImageResource(R.drawable.sticker_24)
             }
 
-            OptiConstant.MERGE -> {
-                p0.ivOption.setImageResource(R.drawable.merge_vertical_24)
-            }
-
-            OptiConstant.TRANSITION -> {
-                p0.ivOption.setImageResource(R.drawable.transition_24)
-            }
+//            OptiConstant.MERGE -> {
+//                p0.ivOption.setImageResource(R.drawable.merge_vertical_24)
+//            }
+//
+//            OptiConstant.TRANSITION -> {
+//                p0.ivOption.setImageResource(R.drawable.transition_24)
+//            }
         }
 
         p0.ivOption.setOnClickListener {

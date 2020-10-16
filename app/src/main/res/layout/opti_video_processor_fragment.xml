@@ -1,86 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ /*
-  ~ * Created by Optisol on Aug 2019.
-  ~ * Copyright © 2019 Optisol Business Solutions pvt ltd. All rights reserved.
-  ~ * */
-  -->
 
-<android.support.v4.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:fillViewport="true">
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         <include
+                android:id="@+id/include"
                 layout="@layout/opti_view_top_bar"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/fullView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/exoPlayer"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <include
-                android:id="@+id/exoPlayer"
-                layout="@layout/opti_layout_custom_exo_player"
+        <android.support.constraint.ConstraintLayout
+                android:id="@+id/fullView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_250sdp"
                 android:layout_marginTop="?android:attr/actionBarSize"
-                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                    android:id="@+id/exoPlayer"
+                    layout="@layout/opti_layout_custom_exo_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                    android:id="@+id/relative_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <com.obs.marveleditor.stickerUtils.MotionView
+                        android:id="@+id/motionview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+            </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
 
         <TextView
                 android:id="@+id/tvInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_black"
                 android:text="@string/select_a_video"
                 android:textColor="@color/white"
-                android:fontFamily="@font/roboto_black"
                 android:textSize="@dimen/_20sdp"
                 android:textStyle="bold"
-                app:layout_constraintVertical_bias="0.3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/extract_frame"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#D01414"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/fullView" />
 
         <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/rvVideoOptions"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/exoPlayer">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fullView">
 
             <ProgressBar
                     android:id="@+id/progressBar"
-                    android:visibility="invisible"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:indeterminateTintMode="src_in"
-                    android:progressBackgroundTint="@color/light_blue"
-                    android:indeterminateTint="@color/blue"
                     android:layout_marginTop="@dimen/_25sdp"
-                    style="?android:attr/progressBarStyleHorizontal"/>
+                    android:indeterminate="false"
+                    android:indeterminateTint="@color/blue"
+                    android:indeterminateTintMode="src_in"
+                    android:max="100"
+                    android:progressBackgroundTint="@color/light_blue"
+                    android:visibility="invisible" />
 
             <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tvVideoProcessing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:visibility="invisible"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:text="@string/processing_video"
-                    android:layout_marginBottom="@dimen/_10sdp"/>
+                    android:textColor="@color/white"
+                    android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -90,41 +121,118 @@
                 android:layout_height="@dimen/_60sdp"
                 android:layout_marginTop="@dimen/_160sdp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         <android.support.constraint.Guideline
+                android:id="@+id/guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/guideline"
-                app:layout_constraintGuide_percent="0.9"
-                android:orientation="horizontal"/>
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.9" />
+
 
         <ImageButton
+                android:id="@+id/ibGallery"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/video_gallery_24"
-                android:background="@color/black"
-                android:padding="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@+id/guideline"
+                android:background="@color/black"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/video_gallery_24"
                 app:layout_constraintEnd_toStartOf="@+id/ibCamera"
                 app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/ibGallery"
-                android:contentDescription="@string/app_name"/>
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
 
         <ImageButton
+                android:id="@+id/ibEmoji"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/video_camera_24"
+                android:background="@color/black"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_baseline_emoji_emotions_24"
+                app:layout_constraintBottom_toBottomOf="@+id/ibGallery"
+                app:layout_constraintEnd_toEndOf="@+id/ibGallery" />
+
+        <ImageButton
+                android:id="@+id/save_relative"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_baseline_save_24px"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+                android:id="@+id/ibCamera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@color/black"
+                android:contentDescription="@string/app_name"
                 android:padding="@dimen/_5sdp"
-                app:layout_constraintTop_toBottomOf="@+id/guideline"
-                app:layout_constraintStart_toEndOf="@+id/ibGallery"
+                android:src="@drawable/video_camera_24"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/ibCamera"
-                android:contentDescription="@string/app_name"/>
+                app:layout_constraintStart_toEndOf="@+id/ibGallery"
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+        <LinearLayout
+                android:id="@+id/sticker_rec_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/cardview_light_background"
+                android:orientation="vertical"
+                android:padding="@dimen/_4sdp"
+                android:translationY="1000dp"
+                android:weightSum="1"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:gravity="center_vertical"
+                        android:text="Select Sticker"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/_18sdp"
+                        android:textStyle="bold" />
+
+                <TextView
+                        android:id="@+id/close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_50sdp"
+                        android:text="X"
+                        android:textColor="#000"
+                        android:textSize="@dimen/_20sdp"
+                        android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/show_stickers"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                    app:spanCount="4"
+                    tools:listitem="@layout/custom_show_stickers" />
+
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 

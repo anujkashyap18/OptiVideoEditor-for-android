@@ -20,12 +20,12 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import com.obs.marveleditor.utils.OptiConstant
 import com.obs.marveleditor.OptiVideoEditor
 import com.obs.marveleditor.R
 import com.obs.marveleditor.adapter.OptiPositionAdapter
-import com.obs.marveleditor.interfaces.OptiPositionListener
 import com.obs.marveleditor.interfaces.OptiFFMpegCallback
+import com.obs.marveleditor.interfaces.OptiPositionListener
+import com.obs.marveleditor.utils.OptiConstant
 import com.obs.marveleditor.utils.OptiUtils
 import java.io.File
 import java.util.*
@@ -125,7 +125,7 @@ class OptiAddTextFragment : BottomSheetDialogFragment(), OptiPositionListener, O
                         .setOutputPath(outputFile.path)
                         .setFont(fontFile)
                         .setText(text)
-                        .setColor("#FFFFFF")
+                        .setColor("#fc0000")
                         .setSize("32")
                         .addBorder(false)
                         .setPosition(positionStr!!)

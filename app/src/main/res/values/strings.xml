@@ -6,9 +6,9 @@
   -->
 
 <resources>
-    <string name="app_name">MarvelEditor</string>
+    <string name="app_name">VideoEditor</string>
 
-    <string name="video_editing">MarvelEditor</string>
+    <string name="video_editing">VideoEditor</string>
     <string name="save">Save</string>
     <string name="processing_video">Processing Video</string>
     <string name="video_1">Video 1</string>
