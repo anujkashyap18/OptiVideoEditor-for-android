@@ -223,11 +223,6 @@ class OptiMasterProcessorFragment : Fragment(), OptiBaseCreatorDialogFragment.Ca
                 })
         }
 
-
-
-
-
-
         emo.setOnClickListener {
             stickerLayout.animate().translationY(0f).duration = 0
         }
@@ -274,7 +269,7 @@ class OptiMasterProcessorFragment : Fragment(), OptiBaseCreatorDialogFragment.Ca
         videoOptions.add(OptiConstant.TEXT)
 //        videoOptions.add(OptiConstant.OBJECT)
 //        videoOptions.add(OptiConstant.MERGE)
-        //videoOptions.add(OptiConstant.TRANSITION)
+//        videoOptions.add(OptiConstant.TRANSITION)
 
         optiVideoOptionsAdapter =
             OptiVideoOptionsAdapter(
